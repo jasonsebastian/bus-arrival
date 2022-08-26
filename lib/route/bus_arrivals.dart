@@ -51,10 +51,7 @@ class _BusArrivalsState extends State<BusArrivals> {
   Future<void> loadArrivalsWithLocationData(locationData) async {
     var stop = await getNearestStop(locationData);
     var selectedServices = getSelectedServices(stop.code);
-    List responses = await Future.wait(
-      selectedServices
-          .map((serviceNo) => getArrivalFromApi(stop.code, serviceNo)),
-    );
+    var response = await getArrivalsFromApi(stop.code);
 
     setState(() {
       _description = stop.description;
@@ -63,13 +60,15 @@ class _BusArrivalsState extends State<BusArrivals> {
           '(${calculateDistanceToStop(locationData, stop).round()}m)';
 
       _arrivals.clear();
-      for (var response in responses) {
-        var service =
-            BusArrivalsResp.fromJson(jsonDecode(response.body)).services[0];
-        _arrivals.putIfAbsent(
-          service.serviceNo,
-          () => service.nextBus.estimatedArrival,
-        );
+      var services =
+          BusArrivalsResp.fromJson(jsonDecode(response.body)).services;
+      for (var service in services) {
+        if (selectedServices.contains(service.serviceNo)) {
+          _arrivals.putIfAbsent(
+            service.serviceNo,
+            () => service.nextBus.estimatedArrival,
+          );
+        }
       }
     });
 
