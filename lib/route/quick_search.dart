@@ -39,7 +39,7 @@ class _QuickSearchState extends State<QuickSearch> {
       return;
     }
 
-    var response = await getArrivalFromApi(stopCode, serviceNo);
+    var response = await getArrivalsFromApi(stopCode, serviceNo: serviceNo);
     var services = BusArrivalsResp.fromJson(jsonDecode(response.body)).services;
     if (services.isEmpty) {
       log('No services found for bus service $serviceNo on $description.');
