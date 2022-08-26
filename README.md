@@ -1,11 +1,20 @@
 # Bus Arrival
 
-<img width="300" alt="image" src="https://user-images.githubusercontent.com/28914732/186626409-df74d9ba-7304-43bb-8c64-8752eb52018e.png">
+<table>
+<tr>
+  <td><img width="300" alt="image" src="https://user-images.githubusercontent.com/28914732/186897211-76f8ff76-cda0-44a7-935b-4ab63db53028.png" /></td>
+  <td><img width="300" alt="image" src="https://user-images.githubusercontent.com/28914732/186897313-875be2f6-846c-4853-9a8d-1b146bcd1a64.png" /></td>
+</tr>
+</table>
 
 A minimalist bus tracker app, written using Flutter. It will automatically determine the current nearest bus stop, and display all relevant bus arrivals for it.
 
 Bus arrivals will auto-refresh every minute.
 
 ## Improvements
-
-1. Add a new page to let user add/remove the relevant bus stops (along with relevant buses for it).
+- Bus Arrivals
+  - Stop timer when leaving "Bus Arrivals" route.
+- Quick Search
+  - Add auto-complete when entering bus stop name.
+  - Improve form validation.
+  - Improve UI.
