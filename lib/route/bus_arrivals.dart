@@ -105,7 +105,7 @@ class _BusArrivalsState extends State<BusArrivals> {
             Container(
               padding: const EdgeInsets.all(24),
               child: Text(
-                'Current bus stop: $_description $_distanceToStop',
+                'Nearest bus stop: $_description $_distanceToStop',
                 style:
                     const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
